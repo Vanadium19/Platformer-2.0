@@ -33,11 +33,4 @@ public class AttackState : AbstractState
                 player.TakeDamage(_damage);
         }
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.cyan;
-
-    //    Gizmos.DrawSphere(_attackPoint.position, _range);
-    //}
 }

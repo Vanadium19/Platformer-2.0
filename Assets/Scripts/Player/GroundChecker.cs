@@ -31,11 +31,4 @@ public class GroundChecker : MonoBehaviour
 
         return isGrounded;
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.cyan;
-
-    //    Gizmos.DrawSphere(transform.position, _radius);
-    //}
 }

@@ -49,11 +49,4 @@ public class PlayerAttacker : MonoBehaviour
                 enemy.TakeDamage(_damage);            
         }
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.cyan;
-
-    //    Gizmos.DrawSphere(_attackPoint.position, _range);
-    //}
 }
