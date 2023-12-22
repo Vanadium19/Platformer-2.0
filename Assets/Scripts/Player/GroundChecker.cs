@@ -5,15 +5,9 @@ public class GroundChecker : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _layerMask;
 
-    private Transform _transform;
     private bool _isGrounded;
 
-    public bool IsGrounded => _isGrounded;
-
-    private void Awake()
-    {
-        _transform = GetComponent<Transform>();
-    }
+    public bool IsGrounded => _isGrounded;    
 
     private void Update()
     {
@@ -24,7 +18,7 @@ public class GroundChecker : MonoBehaviour
     {
         bool isGrounded = false;
 
-        var collider = Physics2D.OverlapCircle(_transform.position, _radius, _layerMask);
+        var collider = Physics2D.OverlapCircle(transform.position, _radius, _layerMask);
 
         if (collider != null)
             isGrounded = true;        
