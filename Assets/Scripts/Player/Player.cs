@@ -4,6 +4,7 @@ public class Player : AbstractHealth
 {
     public void Treat(float healPoint)
     {
-        Health += healPoint;
+        Health = Health + healPoint > MaxHealth ? MaxHealth : Health + healPoint;
+        InvokeHealthChanged();
     }
 }

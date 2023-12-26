@@ -14,7 +14,7 @@ public class AttackState : AbstractState
     {
         if (_elapsedTime <= 0)
         {
-            Attack();
+            StateAnimator.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
             _elapsedTime = _delay;
         }
 
@@ -23,8 +23,6 @@ public class AttackState : AbstractState
 
     private void Attack()
     {
-        StateAnimator.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
-
         var collider = Physics2D.OverlapCircle(_attackPoint.position, _range, _layerMask);
 
         if (collider != null)

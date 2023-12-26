@@ -4,17 +4,21 @@ using UnityEngine.Events;
 [RequireComponent(typeof(AbstractAnimator))]
 public abstract class AbstractHealth : MonoBehaviour
 {
-    [SerializeField] protected float Health;
+    [SerializeField] private float _maxHealth;
     [SerializeField] private float _deathDelay;
 
+    protected float Health;
     private AbstractAnimator _abstractAnimator;
 
     public event UnityAction<float> HealthChanged;
     public event UnityAction Died;
 
+    public float MaxHealth => _maxHealth;
+
     private void Awake()
     {
         _abstractAnimator = GetComponent<AbstractAnimator>();
+        Health = _maxHealth;
     }
 
     public void TakeDamage(float damage)
@@ -29,21 +33,26 @@ public abstract class AbstractHealth : MonoBehaviour
 
         if (Health <= 0)
         {
-            Health = 0;
-            Died?.Invoke();
+            Health = 0;            
             Die();
         }
         else
         {
-            HealthChanged?.Invoke(Health);
             _abstractAnimator.SetTrigger(ProjectData.AnimatorTriggers.TakeHitHash);
+            InvokeHealthChanged();
         }
 
     }
 
+    protected void InvokeHealthChanged()
+    {
+        HealthChanged?.Invoke(Health);
+    }
+
     private void Die()
     {
-        Destroy(gameObject, _deathDelay);
+        Died?.Invoke();
         _abstractAnimator.SetTrigger(ProjectData.AnimatorTriggers.DeathHash);
+        Destroy(gameObject, _deathDelay);
     }
 }
