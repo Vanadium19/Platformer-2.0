@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyProvokedTransition : AbstractTransition
+public class EnemyProvokedTransition : Transition
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {

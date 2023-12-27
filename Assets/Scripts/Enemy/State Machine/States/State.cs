@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AbstractAnimator))]
-public abstract class AbstractState : MonoBehaviour
+[RequireComponent(typeof(AnimatorController))]
+public abstract class State : MonoBehaviour
 {   
-    [SerializeField] private List<AbstractTransition> _transitions;
-        
-    private AbstractAnimator _abstractAnimator;
+    [SerializeField] private List<Transition> _transitions;        
 
-    protected AbstractAnimator StateAnimator => _abstractAnimator;
+    protected AnimatorController AnimatorController { get; private set; }   
 
     private void Awake()
     {
-        _abstractAnimator = GetComponent<AbstractAnimator>();;
+        AnimatorController = GetComponent<AnimatorController>();;
     }
 
     public void TurnOn(bool isTurnOn)
@@ -26,7 +24,7 @@ public abstract class AbstractState : MonoBehaviour
         }
     }
 
-    public AbstractState GetNextState()
+    public State GetNextState()
     {
         foreach (var transition in _transitions)
         {

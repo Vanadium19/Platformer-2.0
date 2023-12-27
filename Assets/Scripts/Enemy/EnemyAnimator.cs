@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyAnimator : AbstractAnimator
+public class EnemyAnimator : AnimatorController
 {
     private void Update()
     {

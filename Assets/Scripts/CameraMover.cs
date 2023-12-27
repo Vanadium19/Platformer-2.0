@@ -11,7 +11,7 @@ public class CameraMover : MonoBehaviour
         _positionZ = transform.position.z;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         transform.position = new Vector3(_player.position.x, _player.position.y, _positionZ);
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthBarChanger))]
-public class PlayerHealthBar : AbstractHealthBar
+public class PlayerHealthBar : HealthBar
 {
     private HealthBarChanger _healthBarChanger;
 

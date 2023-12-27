@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DistanceTransition : AbstractTransition
+public class DistanceTransition : Transition
 {    
     [SerializeField] private float _targetDistance;
 

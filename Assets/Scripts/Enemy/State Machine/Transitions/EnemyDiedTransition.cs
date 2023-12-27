@@ -1,25 +1,25 @@
 using UnityEngine;
 
-[RequireComponent(typeof(AbstractHealth))]
-public class EnemyDiedTransition : AbstractTransition
+[RequireComponent(typeof(ObjectHealth))]
+public class EnemyDiedTransition : Transition
 {
-    private AbstractHealth _abstractHealth;
+    private ObjectHealth _enemyHealth;
 
     private void Awake()
     {
-        _abstractHealth = GetComponent<AbstractHealth>();
+        _enemyHealth = GetComponent<ObjectHealth>();
 
     }
 
     private void OnEnable()
     {
         NeedTransit = false;
-        _abstractHealth.Died += OnEnemyDied;
+        _enemyHealth.Died += OnEnemyDied;
     }
 
     private void OnDisable()
     {
-        _abstractHealth.Died -= OnEnemyDied;
+        _enemyHealth.Died -= OnEnemyDied;
     }
 
     private void OnEnemyDied()

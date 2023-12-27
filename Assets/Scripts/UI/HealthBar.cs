@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class AbstractHealthBar : MonoBehaviour
+public abstract class HealthBar : MonoBehaviour
 {
-    [SerializeField] protected AbstractHealth TargetHealth;
+    [SerializeField] protected ObjectHealth TargetHealth;
     [SerializeField] protected Image BarImage;
 
     private void OnEnable()

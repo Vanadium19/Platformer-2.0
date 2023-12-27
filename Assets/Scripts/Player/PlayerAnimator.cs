@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAnimator : AbstractAnimator
+public class PlayerAnimator : AnimatorController
 {
     private void Update()
     {

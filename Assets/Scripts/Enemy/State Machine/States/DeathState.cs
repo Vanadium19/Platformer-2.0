@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class DeathState : AbstractState
+public class DeathState : State
 {
     private void OnEnable()
     {
-        StateAnimator.SetTrigger(ProjectData.AnimatorTriggers.DeathHash);
+        AnimatorController.SetTrigger(ProjectData.AnimatorTriggers.DeathHash);
     }
 }

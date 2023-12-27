@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetLostTransition : AbstractTransition
+public class TargetLostTransition : Transition
 {
     private void OnTriggerExit2D(Collider2D collision)
     {

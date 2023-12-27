@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackState : AbstractState
+public class AttackState : State
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _delay;
@@ -14,7 +14,7 @@ public class AttackState : AbstractState
     {
         if (_elapsedTime <= 0)
         {
-            StateAnimator.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
+            AnimatorController.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
             _elapsedTime = _delay;
         }
 
@@ -27,8 +27,8 @@ public class AttackState : AbstractState
 
         if (collider != null)
         {
-            if (collider.TryGetComponent(out Player player))
-                player.TakeDamage(_damage);
+            if (collider.TryGetComponent(out PlayerHealth playerHealth))
+                playerHealth.TakeDamage(_damage);
         }
     }
 }

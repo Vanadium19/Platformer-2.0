@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class IdleState : AbstractState
+public class IdleState : State
 {
     private void OnEnable()
     {
-        StateAnimator.SetRunParam(false);
+        AnimatorController.SetRunParam(false);
     }
 }

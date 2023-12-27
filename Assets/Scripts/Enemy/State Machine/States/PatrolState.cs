@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PatrolState : AbstractState
+public class PatrolState : State
 {
     [SerializeField] private float _finalPositionX;
     [SerializeField] private float _speed;
@@ -18,13 +18,13 @@ public class PatrolState : AbstractState
 
         SetTargetPosition();
         _moving = StartCoroutine(Move());
-        StateAnimator.SetRunParam(true);
+        AnimatorController.SetRunParam(true);
     }
 
     private void OnDisable()
     {
         StopCoroutine(_moving);
-        StateAnimator.SetRunParam(false);
+        AnimatorController.SetRunParam(false);
     }
     
     private void SetPositions()

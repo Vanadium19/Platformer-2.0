@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(AbstractAnimator))]
-public abstract class AbstractHealth : MonoBehaviour
+[RequireComponent(typeof(AnimatorController))]
+public abstract class ObjectHealth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _deathDelay;
 
     protected float Health;
-    private AbstractAnimator _abstractAnimator;
+    private AnimatorController _abstractAnimator;
 
     public event UnityAction<float> HealthChanged;
     public event UnityAction Died;
@@ -17,7 +17,7 @@ public abstract class AbstractHealth : MonoBehaviour
 
     private void Awake()
     {
-        _abstractAnimator = GetComponent<AbstractAnimator>();
+        _abstractAnimator = GetComponent<AnimatorController>();
         Health = _maxHealth;
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealthBar : AbstractHealthBar
+public class EnemyHealthBar : HealthBar
 {
     private Canvas _canvas;
 

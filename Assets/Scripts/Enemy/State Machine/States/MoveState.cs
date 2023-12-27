@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoveState : AbstractState
+public class MoveState : State
 {
     [SerializeField] private float _speed;
     [SerializeField] private LayerMask _layerMask;
@@ -9,7 +9,7 @@ public class MoveState : AbstractState
 
     private void OnEnable()
     {              
-        StateAnimator.SetRunParam(true);
+        AnimatorController.SetRunParam(true);
     }
 
     private void Start()
@@ -27,7 +27,7 @@ public class MoveState : AbstractState
 
     private void OnDisable()
     {
-        StateAnimator.SetRunParam(false);
+        AnimatorController.SetRunParam(false);
     }
 
     private void MoveToTarget()

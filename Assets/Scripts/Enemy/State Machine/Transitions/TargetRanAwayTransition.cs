@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetRanAwayTransition : AbstractTransition
+public class TargetRanAwayTransition : Transition
 {
     [SerializeField] private float _range;
 

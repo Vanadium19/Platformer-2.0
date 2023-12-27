@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class TriggerHandler : MonoBehaviour
+public class FirstAidKitPicker : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerHealth _playerHealth;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out FirstAidKit firstAidKit))
         {
-            _player.Treat(firstAidKit.HealPoint);
+            _playerHealth.Treat(firstAidKit.HealPoint);
             Destroy(collision.gameObject);
         }
     }

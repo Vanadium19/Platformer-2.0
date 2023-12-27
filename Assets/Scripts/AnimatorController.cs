@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class AbstractAnimator : MonoBehaviour
+public class AnimatorController : MonoBehaviour
 {
     protected Animator Animator;
     protected bool IsRunning;
