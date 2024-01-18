@@ -21,7 +21,7 @@ public abstract class ObjectHealth : MonoBehaviour
         Health = _maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, bool isPlayAnimation = true)
     {
         if (damage <= 0)
             return;
@@ -29,24 +29,30 @@ public abstract class ObjectHealth : MonoBehaviour
         if (Health <= 0)
             return;
 
-        Health -= damage;        
-
-        if (Health <= 0)
-        {
-            Health = 0;            
-            Die();
-        }
-        else
-        {
-            _abstractAnimator.SetTrigger(ProjectData.AnimatorTriggers.TakeHitHash);
-            InvokeHealthChanged();
-        }
-
+        ApplyDamage(damage, isPlayAnimation);
     }
 
     protected void InvokeHealthChanged()
     {
         HealthChanged?.Invoke(Health);
+    }
+
+    private void ApplyDamage(float damage, bool isPlayAnimation)
+    {
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            Health = 0;
+            Die();
+        }
+        else
+        {
+            if (isPlayAnimation)
+                _abstractAnimator.SetTrigger(ProjectData.AnimatorTriggers.TakeHitHash);
+
+            InvokeHealthChanged();
+        }
     }
 
     private void Die()
