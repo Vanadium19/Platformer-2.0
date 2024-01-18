@@ -26,5 +26,8 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && _playerAttacker.IsAttacking == false)
             _playerAttacker.StartAttack();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            _playerAttacker.UseVampirism();
     }
 }
