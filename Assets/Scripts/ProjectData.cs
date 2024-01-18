@@ -9,11 +9,14 @@ public static class ProjectData
         public static readonly int LandHash = Animator.StringToHash("Land");
         public static readonly int TakeHitHash = Animator.StringToHash("TakeHit");
         public static readonly int DeathHash = Animator.StringToHash("Death");
+        public static readonly int VampirismHash = Animator.StringToHash("Vampirism");
+
     }
 
     public static class AnimatorParams
     {
-        public static readonly int RunHash = Animator.StringToHash("IsRunning");
+        public static readonly int RunStateHash = Animator.StringToHash("IsRunning");
+        public static readonly int VampirizableStateHash = Animator.StringToHash("IsVampirizable");
     }
 
     public static class Axes 
