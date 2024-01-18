@@ -5,6 +5,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private State _startState;
 
     private State _currentState;
+    private bool _isStopped = false; 
 
     private void Start()
     {
@@ -13,6 +14,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if (_isStopped)
+            return;
+
         if (_currentState == null)
             return;
 
@@ -21,6 +25,12 @@ public class EnemyStateMachine : MonoBehaviour
         if (nextState != null)
             Transit(nextState);
 
+    }
+
+    public void TurnOn(bool value)
+    {
+        _isStopped = !value;
+        _currentState.TurnOn(value);
     }
 
     private void Reset(State startState)
