@@ -4,6 +4,6 @@ public class DeathState : State
 {
     private void OnEnable()
     {
-        AnimatorController.SetTrigger(ProjectData.AnimatorTriggers.DeathHash);
+        EnemyAnimatorController.SetTrigger(ProjectData.AnimatorTriggers.DeathHash);
     }
 }

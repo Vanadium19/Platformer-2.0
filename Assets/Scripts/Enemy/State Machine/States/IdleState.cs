@@ -4,6 +4,6 @@ public class IdleState : State
 {
     private void OnEnable()
     {
-        AnimatorController.SetRunParam(false);
+        EnemyAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, false);
     }
 }

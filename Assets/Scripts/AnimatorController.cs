@@ -3,21 +3,25 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimatorController : MonoBehaviour
 {
-    protected Animator Animator;
-    protected bool IsRunning;
+    private Animator _animator;
 
     private void Awake()
     {
-        Animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
-    public void SetRunParam(bool isRunning)
+    public void SetBoolParam(int boolHash, bool value)
     {
-        IsRunning = isRunning;
+        _animator.SetBool(boolHash, value);
+    }
+
+    public void SetBoolParam(string boolName, bool value)
+    {
+        _animator.SetBool(boolName, value);
     }
 
     public void SetTrigger(int triggerHash)
     {
-        Animator.SetTrigger(triggerHash);
+        _animator.SetTrigger(triggerHash);
     }
 }

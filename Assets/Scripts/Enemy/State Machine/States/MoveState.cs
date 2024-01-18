@@ -8,8 +8,8 @@ public class MoveState : State
     private Player _target;
 
     private void OnEnable()
-    {              
-        AnimatorController.SetRunParam(true);
+    {
+        EnemyAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, true);
     }
 
     private void Start()
@@ -27,7 +27,7 @@ public class MoveState : State
 
     private void OnDisable()
     {
-        AnimatorController.SetRunParam(false);
+        EnemyAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, false);
     }
 
     private void MoveToTarget()

@@ -18,15 +18,16 @@ public class PatrolState : State
 
         SetTargetPosition();
         _moving = StartCoroutine(Move());
-        AnimatorController.SetRunParam(true);
+        EnemyAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, true);
+
     }
 
     private void OnDisable()
     {
         StopCoroutine(_moving);
-        AnimatorController.SetRunParam(false);
+        EnemyAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, false);
     }
-    
+
     private void SetPositions()
     {
         _startPosition = transform.position;

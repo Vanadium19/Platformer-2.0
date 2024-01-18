@@ -14,7 +14,7 @@ public class AttackState : State
     {
         if (_elapsedTime <= 0)
         {
-            AnimatorController.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
+            EnemyAnimatorController.SetTrigger(ProjectData.AnimatorTriggers.AttackHash);
             _elapsedTime = _delay;
         }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(PlayerAnimator))]
+[RequireComponent(typeof(AnimatorController))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,7 +11,7 @@ public class PlayerMover : MonoBehaviour
     
     private Rigidbody2D _rigidbody;
     private PlayerInput _playerInput;
-    private PlayerAnimator _playerAnimator;
+    private AnimatorController _playerAnimatorController;
 
     private bool _isGrounded;
     private bool _isOldGrounded;
@@ -20,7 +20,7 @@ public class PlayerMover : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _playerInput = gameObject.AddComponent<PlayerInput>();
-        _playerAnimator = GetComponent<PlayerAnimator>();
+        _playerAnimatorController = GetComponent<AnimatorController>();
     }
 
     private void Update()
@@ -43,8 +43,8 @@ public class PlayerMover : MonoBehaviour
         Vector2 velocity = _speed * input + _rigidbody.velocity.y * Vector2.up;
 
         Flip(velocity.x);
-        _rigidbody.velocity = velocity;
-        _playerAnimator.SetRunParam(velocity.x != 0 && _isGrounded);
+        _rigidbody.velocity = velocity;        
+        _playerAnimatorController.SetBoolParam(ProjectData.AnimatorParams.RunStateHash, velocity.x != 0 && _isGrounded);
     }
 
     private void Flip(float velocityX)
@@ -61,10 +61,10 @@ public class PlayerMover : MonoBehaviour
         if (isJumped && _isGrounded)
         {
             _rigidbody.AddForce(_jumpForce * Vector2.up, ForceMode2D.Impulse);
-            _playerAnimator.SetTrigger(ProjectData.AnimatorTriggers.JumpHash);
+            _playerAnimatorController.SetTrigger(ProjectData.AnimatorTriggers.JumpHash);
         }
 
         if (_isGrounded && _isOldGrounded == false && _rigidbody.velocity.y <= 0)                    
-            _playerAnimator.SetTrigger(ProjectData.AnimatorTriggers.LandHash);        
+            _playerAnimatorController.SetTrigger(ProjectData.AnimatorTriggers.LandHash);        
     }
 }

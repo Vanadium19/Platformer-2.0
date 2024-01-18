@@ -6,11 +6,11 @@ public abstract class State : MonoBehaviour
 {   
     [SerializeField] private List<Transition> _transitions;        
 
-    protected AnimatorController AnimatorController { get; private set; }   
+    protected AnimatorController EnemyAnimatorController { get; private set; }   
 
     private void Awake()
     {
-        AnimatorController = GetComponent<AnimatorController>();;
+        EnemyAnimatorController = GetComponent<AnimatorController>();;
     }
 
     public void TurnOn(bool isTurnOn)
