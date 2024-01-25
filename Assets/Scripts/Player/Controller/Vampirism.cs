@@ -29,8 +29,8 @@ public class Vampirism : MonoBehaviour
         if (_isVampirising == false)
             return;
 
-        if (_targetEnemy == null || CalculateDistance(_targetEnemy.transform) > _range)
-            StopVampirising(_targetEnemy);
+        if (_targetEnemy == null || CalculateDistance(_targetEnemy.transform) > _range)        
+            InterruptVampirising();        
     }
 
     public void Employ(Enemy enemy)
@@ -38,11 +38,8 @@ public class Vampirism : MonoBehaviour
         if (enemy == null)
             return;
 
-        if (_vampirising != null)
-        {
-            StopCoroutine(_vampirising);
-            StopVampirising(_targetEnemy);
-        }
+        if (_vampirising != null)        
+            InterruptVampirising();        
 
         _vampirising = StartCoroutine(UseAbility(enemy));
     }
@@ -81,6 +78,12 @@ public class Vampirism : MonoBehaviour
 
         if (enemy != null)
             VampirizeEnemy(enemy, false);
+    }
+
+    private void InterruptVampirising()
+    {
+        StopCoroutine(_vampirising);
+        StopVampirising(_targetEnemy);
     }
 
     private static void VampirizeEnemy(Enemy enemy, bool value)
